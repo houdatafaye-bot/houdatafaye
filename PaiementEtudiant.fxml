@@ -1,0 +1,202 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.CheckBox?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.control.Separator?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Region?>
+<?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="750.0" prefWidth="1300.0" xmlns="http://javafx.com/javafx/25" xmlns:fx="http://javafx.com/fxml/1">
+    
+    <!-- ========== EN-TÊTE ========== -->
+    <top>
+        <VBox style="-fx-background-color: #1e3a5f;" BorderPane.alignment="CENTER">
+            <children>
+                <HBox alignment="CENTER_LEFT" spacing="20.0" style="-fx-padding: 20 30 15 30; -fx-background-color: #1E40AF;">
+                    <children>
+                        <Label style="-fx-text-fill: white;" text="🎓">
+                            <font>
+                                <Font size="32.0" />
+                            </font>
+                        </Label>
+                        <VBox style="-fx-background-image: #2563eb;">
+                            <children>
+                                <Label style="-fx-text-fill: white; -fx-font-weight: bold;" text="Gestion des Paiements Étudiants">
+                                    <font>
+                                        <Font size="24.0" />
+                                    </font>
+                                </Label>
+                                <Label style="-fx-text-fill: rgba(255,255,255,0.85);" text="Module de suivi des paiements - Agent administratif">
+                                    <font>
+                                        <Font size="13.0" />
+                                    </font>
+                                </Label>
+                            </children>
+                        </VBox>
+                        <Region style="-fx-background-color: #1E40AF;" HBox.hgrow="ALWAYS" />
+                        <VBox alignment="CENTER_RIGHT">
+                            <children>
+                                <Label style="-fx-text-fill: white; -fx-font-weight: bold;" text="👤 Agent: Marie DUPONT" />
+                                <Label style="-fx-text-fill: rgba(255,255,255,0.8);" text="📅 20/04/2026" />
+                            </children>
+                        </VBox>
+                    </children>
+                </HBox>
+            </children>
+        </VBox>
+    </top>
+
+    <!-- ========== CONTENU PRINCIPAL ========== -->
+    <center>
+        <HBox spacing="25.0" style="-fx-background-color: #f0f2f5; -fx-padding: 25;" BorderPane.alignment="CENTER">
+            <children>
+                
+                <!-- ========== COLONNE GAUCHE ========== -->
+                <VBox spacing="15.0" style="-fx-background-color: white; -fx-background-radius: 15; -fx-padding: 0 0 0 0;" HBox.hgrow="ALWAYS">
+                    <children>
+                        <HBox alignment="CENTER_LEFT" style="-fx-padding: 20 20 5 20;">
+                            <children>
+                                <Label style="-fx-font-weight: bold; -fx-font-size: 18; -fx-text-fill: #10b981;" text="📋 Liste des étudiants" />
+                            </children>
+                        </HBox>
+                        
+                        <HBox spacing="12.0" style="-fx-padding: 0 20 10 20;">
+                            <children>
+                                <TextField fx:id="searchField" promptText="🔍 Rechercher par nom, prénom ou numéro..." HBox.hgrow="ALWAYS" />
+                                <Button style="-fx-background-color: #2563eb; -fx-text-fill: white; -fx-background-radius: 8;" text="Chercher" />
+                            </children>
+                        </HBox>
+                        
+                        <HBox spacing="12.0" style="-fx-padding: 0 20 10 20;">
+                            <children>
+                                <ComboBox fx:id="modaliteFilter" prefWidth="150.0" promptText="📆 Toutes modalités" />
+                                <ComboBox fx:id="statutFilter" prefWidth="150.0" promptText="📊 Tous statuts" />
+                            </children>
+                        </HBox>
+                        
+                        <TableView fx:id="etudiantTable" prefHeight="320.0" VBox.vgrow="ALWAYS">
+                            <columns>
+                                <TableColumn fx:id="colNom" prefWidth="200.0" text="👤 Nom / Prénom" />
+                                <TableColumn fx:id="colNumero" prefWidth="120.0" text="🆔 Numéro" />
+                                <TableColumn fx:id="colModalite" prefWidth="110.0" text="📅 Modalité" />
+                                <TableColumn fx:id="colStatut" prefWidth="100.0" text="✅ Statut" />
+                                <TableColumn fx:id="colAction" prefWidth="80.0" text="⚙️ Action" />
+                            </columns>
+                        </TableView>
+                        
+                        <HBox alignment="CENTER_RIGHT" style="-fx-padding: 10 20 20 20;">
+                            <children>
+                                <Button fx:id="addButton" style="-fx-background-color: #10b981; -fx-text-fill: white; -fx-background-radius: 8; -fx-padding: 10 20;" text="➕ Nouvel étudiant" />
+                            </children>
+                        </HBox>
+                    </children>
+                </VBox>
+                
+                <!-- ========== COLONNE DROITE ========== -->
+                <ScrollPane fitToWidth="true" style="-fx-background-color: transparent;" HBox.hgrow="ALWAYS">
+                    <content>
+                        <VBox spacing="18.0" style="-fx-background-color: white; -fx-background-radius: 15; -fx-padding: 25;">
+                            <children>
+                                <Label fx:id="ficheTitle" style="-fx-font-weight: bold; -fx-font-size: 18; -fx-text-fill: #000000;" text="👨‍🎓 Fiche étudiant - Sélectionnez un étudiant" />
+                                
+                                <Separator />
+                                
+                                <Label style="-fx-font-weight: bold; -fx-font-size: 14; -fx-text-fill: #0d9488;" text="📝 Informations personnelles" />
+                                
+                                <GridPane hgap="15.0" vgap="12.0">
+                                    <children>
+                                        <Label style="-fx-font-weight: bold;" text="Nom :" GridPane.columnIndex="0" GridPane.rowIndex="0" />
+                                        <TextField fx:id="nomField" promptText="Nom" GridPane.columnIndex="1" GridPane.rowIndex="0" />
+                                        <Label style="-fx-font-weight: bold;" text="Prénom :" GridPane.columnIndex="2" GridPane.rowIndex="0" />
+                                        <TextField fx:id="prenomField" promptText="Prénom" GridPane.columnIndex="3" GridPane.rowIndex="0" />
+                                        <Label style="-fx-font-weight: bold;" text="Numéro étudiant :" GridPane.columnIndex="0" GridPane.rowIndex="1" />
+                                        <TextField fx:id="numeroField" promptText="Ex: 20240001" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+                                    </children>
+                                    <columnConstraints>
+                                        <ColumnConstraints />
+                                        <ColumnConstraints />
+                                        <ColumnConstraints />
+                                        <ColumnConstraints />
+                                    </columnConstraints>
+                           <rowConstraints>
+                              <RowConstraints />
+                              <RowConstraints />
+                           </rowConstraints>
+                                </GridPane>
+                                
+                                <Separator />
+                                
+                                <Label style="-fx-font-weight: bold; -fx-font-size: 14; -fx-text-fill: #1E40AF;" text="💰 Informations de paiement" />
+                                
+                                <GridPane hgap="15.0" vgap="12.0">
+                                    <children>
+                                        <Label style="-fx-font-weight: bold;" text="Modalité :" GridPane.columnIndex="0" GridPane.rowIndex="0" />
+                                        <ComboBox fx:id="modaliteCombo" prefWidth="180.0" GridPane.columnIndex="1" GridPane.rowIndex="0" />
+                                    </children>
+                           <columnConstraints>
+                              <ColumnConstraints />
+                              <ColumnConstraints />
+                           </columnConstraints>
+                           <rowConstraints>
+                              <RowConstraints />
+                           </rowConstraints>
+                                </GridPane>
+                                
+                                <HBox spacing="35.0" style="-fx-padding: 5 0 5 0;">
+                                    <children>
+                                        <CheckBox fx:id="payeCheck" style="-fx-font-weight: bold; -fx-text-fill: #10b981;" text="✅ Payé" />
+                                        <CheckBox fx:id="retardCheck" style="-fx-font-weight: bold; -fx-text-fill: #ef4444;" text="⚠️ En retard" />
+                                    </children>
+                                </HBox>
+                                
+                                <Label style="-fx-font-weight: bold; -fx-font-size: 14;" text="📝 Commentaire" />
+                                <TextArea fx:id="commentaireArea" prefHeight="90.0" promptText="Saisir le montant, la période, les observations..." wrapText="true" />
+                                
+                                <HBox spacing="15.0" style="-fx-padding: 10 0 5 0;">
+                                    <children>
+                                        <Button fx:id="saveButton" style="-fx-background-color: #6b7280; -fx-text-fill: white; -fx-background-radius: 8; -fx-padding: 10 20;" text="💾 Enregistrer" />
+                                        <Button fx:id="genererRecuButton" style="-fx-background-color: #10b981; -fx-text-fill: white; -fx-background-radius: 8; -fx-padding: 10 20;" text="📄 Générer le reçu" />
+                                    </children>
+                                </HBox>
+                                
+                                <Separator />
+                                
+                                <Label style="-fx-font-weight: bold; -fx-font-size: 14; -fx-text-fill: #0d9488;" text="📜 Historique des paiements" />
+                                
+                                <TableView fx:id="historiqueTable" prefHeight="160.0">
+                                    <columns>
+                                        <TableColumn fx:id="colDate" prefWidth="110.0" text="📅 Date" />
+                                        <TableColumn fx:id="colMontant" prefWidth="90.0" text="💰 Montant" />
+                                        <TableColumn fx:id="colRecu" prefWidth="130.0" text="📄 N° Reçu" />
+                                        <TableColumn fx:id="colCommentaire" prefWidth="200.0" text="💬 Commentaire" />
+                                    </columns>
+                                </TableView>
+                            </children>
+                        </VBox>
+                    </content>
+                </ScrollPane>
+            </children>
+        </HBox>
+    </center>
+    
+    <bottom>
+        <HBox alignment="CENTER" style="-fx-background-color: white; -fx-padding: 12;">
+            <children>
+                <Label style="-fx-text-fill: #000000; -fx-font-size: 11;" text="© 2026 - Gestion des Paiements Étudiants | Version 1.0" />
+            </children>
+        </HBox>
+    </bottom>
+</BorderPane>
