@@ -34,7 +34,7 @@
                     <HBox alignment="CENTER_LEFT" spacing="10">
                         <Label style="-fx-font-size: 14px; -fx-font-weight: bold; -fx-text-fill: #10b981;" text="Historique des paiements" />
                         <Region HBox.hgrow="ALWAYS" />
-                        <Button style="-fx-background-color: #6b7280; -fx-text-fill: #000000;" text="Actualiser" />
+                        <Button style="-fx-background-color: #e2e8f0; -fx-text-fill: #000000;" text="Actualiser" />
                     </HBox>
                     <TableView VBox.vgrow="ALWAYS">
                         <columns>
@@ -87,7 +87,14 @@
 
                     <Label style="-fx-font-size: 12px; -fx-text-fill: #334155;" text="Justification (si montant modifie)" />
                     <TextField promptText="Ex: prime exceptionnelle" />
-
+ <!-- Statut du paiement -->
+                    <VBox spacing="4">
+                        <Label style="-fx-font-size: 12px; -fx-text-fill: #475569; -fx-font-weight: bold;" text="Statut du paiement" />
+                        <HBox spacing="10">
+                            <Button style="-fx-background-color: #ef4444; -fx-text-fill: white; -fx-background-radius: 6; -fx-cursor: hand; -fx-padding: 4 12 4 12;" text="Non valide" />
+                            <Button style="-fx-background-color: #10b981; -fx-text-fill: white; -fx-background-radius: 6; -fx-cursor: hand; -fx-padding: 4 12 4 12;" text="Valider" />
+                        </HBox>
+                    </VBox>
                     <HBox alignment="CENTER" spacing="10">
                         <Button style="-fx-background-color: #3b82f6; -fx-text-fill: white; -fx-font-weight: bold;" text="Enregistrer" />
                         <Button style="-fx-background-color: #10b981; -fx-text-fill: white; -fx-font-weight: bold;" text="Valider" />
