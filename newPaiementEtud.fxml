@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.geometry.Insets?>
+
+<HBox xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.votreprojet.Controller">
+   <children>
+      <ScrollPane fitToWidth="true" HBox.hgrow="ALWAYS">
+         <content>
+            <VBox spacing="18.0" style="-fx-background-color: white; -fx-background-radius: 15; -fx-padding: 25;">
+               <children>
+                  <Label fx:id="ficheTitle" style="-fx-font-weight: bold; -fx-font-size: 18; -fx-text-fill: #000000;" text="👨‍🎓 Fiche étudiant - Sélectionnez un étudiant" />
+                  
+                  <Separator />
+                  
+                  <Label style="-fx-font-weight: bold; -fx-font-size: 14; -fx-text-fill: #0d9488;" text="📝 Informations personnelles" />
+                  
+                  <GridPane hgap="15.0" vgap="12.0">
+                     <columnConstraints>
+                        <ColumnConstraints minWidth="100.0" />
+                        <ColumnConstraints hgrow="SOMETIMES" />
+                        <ColumnConstraints minWidth="80.0" />
+                        <ColumnConstraints hgrow="SOMETIMES" />
+                     </columnConstraints>
+                     <rowConstraints>
+                        <RowConstraints minHeight="10.0" vgrow="SOMETIMES" />
+                        <RowConstraints minHeight="10.0" vgrow="SOMETIMES" />
+                     </rowConstraints>
+                     <children>
+                        <Label style="-fx-font-weight: bold;" text="Nom :" GridPane.columnIndex="0" GridPane.rowIndex="0" />
+                        <TextField fx:id="nomField" promptText="Nom" GridPane.columnIndex="1" GridPane.rowIndex="0" />
+                        
+                        <Label style="-fx-font-weight: bold;" text="Prénom :" GridPane.columnIndex="2" GridPane.rowIndex="0" />
+                        <TextField fx:id="prenomField" promptText="Prénom" GridPane.columnIndex="3" GridPane.rowIndex="0" />
+                        
+                        <Label style="-fx-font-weight: bold;" text="Numéro étudiant :" GridPane.columnIndex="0" GridPane.rowIndex="1" />
+                        <TextField fx:id="numeroField" promptText="Ex: 20240001" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+                     </children>
+                  </GridPane>
+                  
+                  <Separator />
+                  
+                  <Label style="-fx-font-weight: bold; -fx-font-size: 14; -fx-text-fill: #1E40AF;" text="💰 Informations de paiement" />
+                  
+                  <GridPane hgap="15.0" vgap="12.0">
+                     <columnConstraints>
+                        <ColumnConstraints minWidth="100.0" />
+                        <ColumnConstraints hgrow="SOMETIMES" />
+                     </columnConstraints>
+                     <rowConstraints>
+                        <RowConstraints minHeight="10.0" vgrow="SOMETIMES" />
+                     </rowConstraints>
+                     <children>
+                        <Label style="-fx-font-weight: bold;" text="Modalité :" GridPane.columnIndex="0" GridPane.rowIndex="0" />
+                        <ComboBox fx:id="modaliteCombo" prefWidth="180.0" GridPane.columnIndex="1" GridPane.rowIndex="0" />
+                     </children>
+                  </GridPane>
+                  
+                  <HBox spacing="35.0" style="-fx-padding: 5 0 5 0;">
+                     <children>
+                        <CheckBox fx:id="payeCheck" style="-fx-font-weight: bold; -fx-text-fill: #10b981;" text="✅ Payé" />
+                        <CheckBox fx:id="retardCheck" style="-fx-font-weight: bold; -fx-text-fill: #ef4444;" text="⚠️ En retard" />
+                     </children>
+                  </HBox>
+                  
+                  <Label style="-fx-font-weight: bold; -fx-font-size: 14;" text="📝 Commentaire" />
+                  <TextArea fx:id="commentaireArea" prefHeight="90.0" promptText="Saisir le montant, la période, les observations..." wrapText="true" />
+                  
+                  <HBox spacing="15.0" style="-fx-padding: 10 0 5 0;">
+                     <children>
+                        <Button fx:id="saveButton" style="-fx-background-color: #6b7280; -fx-text-fill: white; -fx-background-radius: 8; -fx-padding: 10 20;" text="💾 Enregistrer" />
+                        <Button fx:id="genererRecuButton" style="-fx-background-color: #10b981; -fx-text-fill: white; -fx-background-radius: 8; -fx-padding: 10 20;" text="📄 Générer le reçu" />
+                     </children>
+                  </HBox>
+                  
+                  <Separator />
+                  
+                  <Label style="-fx-font-weight: bold; -fx-font-size: 14; -fx-text-fill: #0d9488;" text="📜 Historique des paiements" />
+                  
+                  <TableView fx:id="historiqueTable" prefHeight="160.0">
+                     <columns>
+                        <TableColumn fx:id="colDate" prefWidth="110.0" text="📅 Date" />
+                        <TableColumn fx:id="colMontant" prefWidth="90.0" text="💰 Montant" />
+                        <TableColumn fx:id="colRecu" prefWidth="130.0" text="📄 N° Reçu" />
+                        <TableColumn fx:id="colCommentaire" prefWidth="200.0" text="💬 Commentaire" />
+                     </columns>
+                     <columnResizePolicy>
+                        <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
+                     </columnResizePolicy>
+                  </TableView>
+               </children>
+            </VBox>
+         </content>
+      </ScrollPane>
+   </children>
+</HBox>
